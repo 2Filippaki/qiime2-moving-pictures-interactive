@@ -64,12 +64,20 @@ conda activate qiime2-amplicon-2024.10
 
 ### Preprocessing & Metadata
 
-Optional preprocessing (BAM support)
+**Data Preprocessing**
 If your input data is in BAM format, you can convert or preprocess it using the helper script:
 ```Bash
 ./pre-QIIME2.sh
 ```
-This step ensures compatibility before running the main pipeline.
+This script performs the following critical steps:
+
+   Compatibility: Converts BAM files to FASTQ format.
+
+   Standardization: Renames files for easy identification.
+
+   Quality Assurance: Runs FastQC on your combined dataset to ensure data integrity.
+
+*Note: If you already have your FASTQ files, this script will automatically skip the conversion step but will still run the Quality Control report.*
 
 **Metadata handling** (manifest)
 
