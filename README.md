@@ -79,6 +79,8 @@ This script performs the following critical steps:
 
 *Note: If you already have your FASTQ files, this script will automatically skip the conversion step but will still run the Quality Control report.*
 
+---
+
 **Metadata handling** (manifest)
 
 The manifest.tsv file is automatically generated during FASTQ import and is intended to be manually edited by the user if needed.
@@ -108,6 +110,8 @@ How to use this pipeline
     ./run-QIIME2.sh
       ```       
 
+---
+
 **The script will automatically:**
 * Detect FASTQ files
 * Build manifest files
@@ -123,6 +127,8 @@ How to use this pipeline
 * Ion Torrent
 * 454 pyrosequencing
 
+---
+
 **Requirements**
 
 - Linux / WSL
@@ -130,7 +136,77 @@ How to use this pipeline
 - QIIME2 (2024.10 amplicon distribution)
 - Recommended: ≥8 GB RAM 
 - Storage: depends on dataset size (FASTQ + QIIME2 artifacts)
-  
+OUTPUT FILES HELPER
+
+---
+
+**GENERAL QIIME2 OUTPUTS**
+
+demuxUntr.qza → raw sequencing reads and quality scores for each sample
+
+table-dada2.qza → abundance of each ASV in every sample (community composition)
+
+rep-seqs-dada2.qza → unique ASV nucleotide sequences detected after denoising
+
+stats-dada2.qza → read retention and filtering performance during DADA2 processing
+
+taxonomy.qza → taxonomic identity of ASVs (Kingdom → Species)
+
+blast-results.qza → closest database matches and sequence similarity for ASVs
+
+aligned-rep-seqs.qza → multiple sequence alignment showing nucleotide similarities among ASVs
+
+masked-aligned-rep-seqs.qza → cleaned alignment excluding highly variable positions
+
+unrooted-tree.qza → evolutionary relationships among ASVs before rooting
+
+rooted-tree.qza → rooted phylogenetic relationships used for phylogenetic diversity metrics
+
+---
+
+**ALPHA DIVERSITY (alpha-metrics/)**
+
+observed_features_vector → number of unique ASVs/features detected per sample (richness)
+
+chao1_vector → estimated species richness including rare/undetected taxa
+
+shannon_vector → diversity considering both richness and evenness
+
+simpson_vector → dominance/diversity metric emphasizing abundant taxa
+
+pielou_e_vector → evenness of taxa distribution within each sample
+
+faith_pd_vector → phylogenetic diversity based on evolutionary distances among ASVs
+
+---
+
+**CORE METRICS / BETA DIVERSITY (core-metrics-results/)**
+
+rarefied_table.qza → rarefied ASV abundance table normalized to equal sequencing depth
+
+bray_curtis_distance_matrix.qza → compositional dissimilarity between samples based on ASV abundance
+
+jaccard_distance_matrix.qza → presence/absence dissimilarity between samples
+
+weighted_unifrac_distance_matrix.qza → phylogenetic beta diversity weighted by ASV abundance
+
+unweighted_unifrac_distance_matrix.qza → phylogenetic beta diversity based on presence/absence
+
+*_pcoa_results.qza → Principal Coordinates Analysis (PCoA) coordinates for sample clustering
+
+*_emperor.qzv → interactive 3D Emperor plots visualizing beta diversity clustering
+
+*_significance.qzv → PERMANOVA statistical tests comparing groups based on beta diversity
+
+observed_features_vector.qza → observed ASV richness per sample
+
+faith_pd_vector.qza → phylogenetic alpha diversity per sample
+
+shannon_vector.qza → alpha diversity considering richness and evenness
+
+evenness_vector.qza → taxa distribution uniformity within samples  
+
+---
 
 **Note:** 
 This workflow has been primarily tested and validated on Ion Torrent single-end 16S rRNA gene microbiome datasets.
