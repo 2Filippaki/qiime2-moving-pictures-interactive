@@ -85,6 +85,22 @@ This script performs the following critical steps:
 
    Quality Assurance: Runs FastQC on your combined dataset to ensure data integrity.
 
+
+Run the script inside the directory containing the BAM files, 
+
+```bash
+./pre-QIIME2.sh
+```
+
+or provide an absolute path
+
+```bash
+./pre-QIIME2.sh /absolute/path/to/bam_directory
+```
+
+All output files (FASTQ, FastQC reports, and results) will be generated in the same directory that you provide to the script.
+
+
 *Note: If you already have your FASTQ files, this script will automatically skip the conversion step but will still run the Quality Control report.*
 
 ---
@@ -145,6 +161,23 @@ How to use this pipeline
     ```Bash
     ./run-QIIME2.sh
       ```       
+The pipeline must be executed from the directory containing the FASTQ files OR you must provide an absolute path to that directory.
+
+All outputs will be written inside the same working directory unless otherwise specified.
+
+Examples:
+
+1. Run inside folder:
+```bash
+   ./run-QIIME2.sh
+   ```
+
+2. Or give absolute path:
+```bash
+   ./run-QIIME2.sh /path/to/fastq_dir
+  ```
+
+All outputs are generated in the same directory where the pipeline is executed.
 
 ---
 
