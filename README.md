@@ -7,6 +7,14 @@ Interactive QIIME2 amplicon analysis pipeline inspired by the Moving Pictures tu
 This project is an interactive Next-Generation Sequencing (NGS) amplicon analysis pipeline built on top of QIIME2. It is designed to take raw FASTQ sequencing data and guide the user step-by-step through a complete amplicon sequencing data analysis workflow — from raw reads to taxonomic profiling and downstream diversity analysis.
 
 The pipeline is inspired by the QIIME2 "Moving Pictures" tutorial and extends it into a fully interactive, checkpoint-based Bash workflow that can be run locally in a Conda/QIIME2 environment.
+The official QIIME2 Moving Pictures tutorial: https://amplicon-docs.qiime2.org/en/stable/tutorials/moving-pictures/
+
+---
+# Disclaimer
+
+This workflow is intended for research and educational purposes.
+Users are responsible for validating parameters, reference databases,
+and biological interpretations for their specific datasets.
 
 ---
 
@@ -81,6 +89,34 @@ This script performs the following critical steps:
 
 ---
 
+# Viewing FastQC Reports
+
+FastQC reports are generated automatically inside:
+
+```text
+fastqc_reports/
+```
+
+To open a report:
+
+1. Navigate to the `fastqc_reports` directory
+2. Open the `.html` file in your web browser
+   
+
+The report includes:
+
+- Per-base sequence quality
+- GC content
+- Sequence length distribution
+- Adapter content
+- Overrepresented sequences
+- General sequencing quality metrics
+
+Here is an external guide that may help you interpret FastQC reports:
+
+https://bioinfo.cd-genomics.com/quality-control-how-do-you-read-your-fastqc-results.html
+
+---
 **Metadata handling** (manifest)
 
 The manifest.tsv file is automatically generated during FASTQ import and is intended to be manually edited by the user if needed.
@@ -212,6 +248,14 @@ evenness_vector.qza → taxa distribution uniformity within samples
 This workflow has been primarily tested and validated on Ion Torrent single-end 16S rRNA gene microbiome datasets.
 
 Illumina and paired-end support are implemented, but further validation across diverse datasets is ongoing.
+
+---
+
+## Learning Resources
+
+A helpful video workshop series for understanding QIIME2 workflows:
+
+https://youtube.com/playlist?list=PLbVDKwGpb3XmkQmoBy1wh3QfWlWdn_pTT&si=bwsxcEY8KHAWRM4g
 
 ---
 
